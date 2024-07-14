@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>Text Multiplier</title>
+    </head>
+    <body>
+        <center>
+            <div class="container">
+                <input type="text" id="input" value="hello world" placeholder="Please enter Text" class="input-box">
+                <button id="button" onclick="func()" class="btn">Submit</button>
+                <br><br>
+                <input type="number" id="inputn" placeholder="Enter no. of Copies" value="10" class="input-box">
+                <br><br>
+                <textarea id="textarea" class="textarea"></textarea>
+                <br><br>
+                <button id="clear" onclick="clearTextarea()" class="btn">Clear</button>
+                <br><br>
+                <button id="copy" onclick="copyTextarea()" class="btn">Copy</button>
+            </div>
+            <script>
+                function func() {
+                    var numb = document.getElementById("inputn").value;
+                    var text = document.getElementById("input").value;
+
+                    if(numb !== "" && text !== ""){
+
+                    for (var i = 0; i < numb; i++) {
+                        var area = document.getElementById("textarea").value;
+                        document.getElementById("textarea").value = area + text + " ";
+                    }
+                }else{
+                    alert("Please select valid no. of copies or write valid text");
+                }
+
+                    
+                }
+
+                function clearTextarea() {
+                    document.getElementById("textarea").value = "";
+                }
+
+                function copyTextarea() {
+                    var textarea = document.getElementById("textarea");
+                    textarea.select();
+                    textarea.setSelectionRange(0, 99999); // For mobile devices
+                    document.execCommand("copy");
+                    alert("Copied the text");
+                }
+            </script>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f0f0f0;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                }
+                .container {
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+                .input-box {
+                    width: 80%;
+                    padding: 10px;
+                    margin: 10px 0;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+                .textarea {
+                    width: 80%;
+                    height: 200px;
+                    padding: 10px;
+                    margin: 10px 0;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+                .btn {
+                    padding: 10px 20px;
+                    margin: 10px 0;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: #007BFF;
+                    color: white;
+                    cursor: pointer;
+                    font-size: 16px;
+                }
+                .btn:hover {
+                    background-color: #0056b3;
+                }
+            </style>
+        </center>
+    </body>
+</html>
